@@ -1,0 +1,17 @@
+name: Issue Tracker Triage Automation
+description: A real world simulated bug tracking and issue triage system.
+version: "1.0.0"
+
+tasks:
+  - id: "easy"
+    description: "Triage a single straightforward bug report."
+  - id: "medium"
+    description: "Identify and handle a duplicate issue report among 3 open issues."
+  - id: "hard"
+    description: "Perform full triage, routing, and deduplication for a batch of 5 mixed incoming issues."
+
+interfaces:
+  action: Action
+  observation: Observation
+  reward: Reward
+  state: State
