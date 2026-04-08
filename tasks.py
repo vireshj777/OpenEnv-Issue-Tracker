@@ -86,7 +86,7 @@ def grade_medium(issues: Dict[str, Issue]) -> float:
     return 0.01
 
 def grade_hard(issues: Dict[str, Issue]) -> float:
-    score = 0.0
+    score = 0.01
     max_score = 5.0
     
     # ISSUE-301: Bug, Backend, High
@@ -106,7 +106,7 @@ def grade_hard(issues: Dict[str, Issue]) -> float:
     # ISSUE-303: Duplicate of 302
     i303 = issues.get("ISSUE-303")
     if i303:
-        if i303.status == "duplicate" and i303.duplicate_of == "ISSUE-302": score += 1.0
+        if i303.status == "duplicate" and i303.duplicate_of == "ISSUE-302": score += 0.99
         elif i303.status == "duplicate": score += 0.5
 
     # ISSUE-304: Bug, Backend, High

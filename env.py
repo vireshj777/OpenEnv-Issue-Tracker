@@ -36,7 +36,7 @@ class IssueTriageEnv:
             return self._get_observation(), Reward(value=0.01, reason="Episode is already done."), True, {}
 
         self.state.step_count += 1
-        reward_value = 0.0
+        reward_value = 0.01
         reason = ""
         
         try:
@@ -44,7 +44,7 @@ class IssueTriageEnv:
             if action.action_type == "view_issue":
                 issue = self._get_issue(action.issue_id)
                 self.state.last_action_result = f"Content of {action.issue_id}: TITLE: {issue.title} | DESCRIPTION: {issue.description}"
-                reward_value, reason = 0.0, "Viewed issue safely."
+                reward_value, reason = 0.01, "Viewed issue safely."
                 
             elif action.action_type == "add_label":
                 issue = self._get_issue(action.issue_id)
@@ -54,7 +54,7 @@ class IssueTriageEnv:
                     reward_value, reason = 0.05, f"Added a label to {action.issue_id}."
                 else:
                     self.state.last_action_result = f"Label '{action.label}' already exists on {action.issue_id}."
-                    reward_value, reason = 0.0, "Label already existed."
+                    reward_value, reason = 0.01, "Label already existed."
 
             elif action.action_type == "set_priority":
                 issue = self._get_issue(action.issue_id)
